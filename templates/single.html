@@ -1,0 +1,83 @@
+{% extends 'index.html' %}
+{% load customfilter %}
+{% load static %}
+{% block content %}
+<!-- single -->
+
+<div class="single-page-agile-main">
+<div class="container">
+		<!-- /w3l-medile-movies-grids -->
+			<div class="agileits-single-top">
+				<ol class="breadcrumb">
+				  <li><a href="index.html">Home</a></li>
+				  <li class="active">Single</li>
+				</ol>
+			</div>
+			<div class="single-page-agile-info">
+                   <!-- /movie-browse-agile -->
+                           <div class="show-top-grids-w3lagile">
+				<div class="col-sm-8 single-left">
+					<div class="song">
+						<div class="song-info">
+							<h3>{{movie.name}}</h3>
+					</div>
+						<div class="video-grid-single-page-agileits">
+							<div data-video="dLmKio67pVQ" id="video"> <img src="{% static 'images/' %}{{movie.movie.image_name}}" alt="" class="img-responsive" style="height:500px;"/> </div>
+						</div>
+					</div>
+					<div class="song-grid-right">
+						<div class="share">
+
+							{% for key, value in movie.movie.movie_info|stringtodict %}
+							<p><b>{{key}}: </b>{{value}}<p>
+							{% endfor %}
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+
+					<div class="all-comments">
+
+						 <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Verdict Url</th>
+        <th>Comment</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+	{% for verdict in movie.movie_verdict.all%}
+      <tr>
+        <td><a href="{{verdict.verdict_link}}" target="_blank">{{verdict.verdict_link}}</td>
+        <td>{{verdict.comment}}</td>
+        <td>{{verdict.rating}}</td>
+      </tr>
+	{% endfor %}
+    </tbody>
+  </table>
+					</div>
+				</div>
+				<div class="col-md-4 single-right">
+					<h3>Display Adds</h3>
+					<div class="single-grid-right">
+
+
+					</div>
+				</div>
+				
+
+				
+				<div class="clearfix"> </div>
+			</div>
+				<!-- //movie-browse-agile -->
+				<!--body wrapper start-->
+
+		<!--body wrapper end-->
+						
+							 
+				</div>
+				<!-- //w3l-latest-movies-grids -->
+			</div>	
+		</div>
+<!-- //w3l-medile-movies-grids -->
+{% endblock %}

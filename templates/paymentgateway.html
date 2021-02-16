@@ -1,0 +1,26 @@
+{% extends 'index.html'%}
+{% block content %}
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-md-8">{% include 'movie-grid-agile.html'%}</div>
+        <div class="col-md-4">
+<form action="{% url 'success' %}" method="POST">
+    {% csrf_token %}
+<script
+    src="https://checkout.razorpay.com/v1/checkout.js"
+    data-key="rzp_live_8pmt5yonMQZxdZ"
+    data-amount="500"
+    data-currency="INR"
+    data-buttontext="Pay with Razorpay"
+    data-name="Just Movie Info"
+    data-theme.color="#F37254"
+></script>
+<input type="hidden" custom="Hidden Element" name="hidden">
+</form>
+        </div>
+    </div>
+
+</div>
+
+    {% endblock %}
